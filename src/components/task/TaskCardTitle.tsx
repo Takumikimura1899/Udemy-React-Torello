@@ -9,17 +9,22 @@ export const TaskCardTitle = () => {
     console.log(isClick);
   };
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputCardTitle(e.target.value);
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsClick(false);
   };
   return (
     <div onClick={handleClick}>
       {isClick ? (
-        <form>
+        <form onSubmit={handleSubmit}>
           <input type='text' onChange={handleChange} />
         </form>
       ) : (
-        <h3>Today</h3>
+        <h3>{inputCardTitle}</h3>
       )}
     </div>
   );
