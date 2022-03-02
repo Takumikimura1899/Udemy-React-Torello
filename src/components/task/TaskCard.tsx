@@ -5,8 +5,8 @@ import { TaskCardTitle } from './TaskCardTitle';
 import { Tasks } from './Tasks';
 
 export const TaskCard = () => {
-  const [inputText, setInputText] = useState('');
-  const [taskList, setTaskList] = useState([]);
+  const [inputText, setInputText] = useState<string>('');
+  const [taskList, setTaskList] = useState<{ text: string }[]>([]);
   return (
     <div className='taskCard'>
       <TaskCardTitle />
