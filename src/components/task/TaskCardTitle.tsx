@@ -22,10 +22,11 @@ export const TaskCardTitle = () => {
     setIsClick(false);
   };
   return (
-    <div onClick={handleClick}>
+    <div onClick={handleClick} className='taskCardTitleInputArea'>
       {isClick ? (
         <form onSubmit={handleSubmit}>
           <input
+            className='taskCardTitleInput'
             type='text'
             onChange={handleChange}
             onBlur={handleBlur}
