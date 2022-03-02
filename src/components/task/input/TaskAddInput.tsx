@@ -16,6 +16,7 @@ export const TaskAddInput: React.FC<Props> = ({
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setTaskList([...taskList, { text: inputText }]);
+    setInputText('');
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -29,6 +30,7 @@ export const TaskAddInput: React.FC<Props> = ({
           placeholder='add a task'
           className='taskAddInput'
           onChange={handleChange}
+          value={inputText}
         />
         <p></p>
       </form>
