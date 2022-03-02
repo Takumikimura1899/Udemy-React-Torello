@@ -1,15 +1,17 @@
 import React from 'react';
+import { Task } from './Task';
 
 type Props = {
-  inputText: string;
   taskList: { text: string }[];
 };
 
-export const Tasks: React.FC<Props> = ({ inputText, taskList }) => {
+export const Tasks: React.FC<Props> = ({ taskList }) => {
   return (
     <div>
       {taskList.map((task) => (
-        <div>{task.text}</div>
+        <div>
+          <Task task={task} />
+        </div>
       ))}
     </div>
   );
