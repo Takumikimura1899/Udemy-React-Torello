@@ -34,7 +34,7 @@ header {
 
 .app {
   background: url(../src/images/sea.jpg);
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
 }
@@ -59,4 +59,13 @@ header {
   padding: 4px 6px;
   border-radius: 3px;
   border: none;
+}
+
+.taskAddInput {
+  width: 90%;
+  font-size: 1.3rem;
+  padding: 10px 15px;
+  border-radius: 3px;
+  border: none;
+  outline: none;
 }
