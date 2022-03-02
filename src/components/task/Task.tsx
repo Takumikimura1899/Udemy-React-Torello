@@ -8,10 +8,10 @@ type Props = {
 export const Task: React.FC<Props> = ({ task }) => {
   return (
     <div className='taskBox'>
-      <p className='taskText'>
-        {task.text}
+      <p className='taskText'>{task.text}</p>
+      <button className='taskTrashButton'>
         <FaTrashAlt />
-      </p>
+      </button>
     </div>
   );
 };
