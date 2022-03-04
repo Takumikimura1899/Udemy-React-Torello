@@ -17,6 +17,7 @@ export const TaskAddInput: React.FC<Props> = ({
 }) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (inputText === '') return;
     setTaskList([...taskList, { id: taskList.length, text: inputText }]);
     setInputText('');
   };
