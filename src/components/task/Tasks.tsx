@@ -2,15 +2,16 @@ import React from 'react';
 import { Task } from './Task';
 
 type Props = {
-  taskList: { text: string }[];
+  taskList: Task[];
+  setTaskList: React.Dispatch<React.SetStateAction<Task[]>>;
 };
 
-export const Tasks: React.FC<Props> = ({ taskList }) => {
+export const Tasks: React.FC<Props> = ({ taskList, setTaskList }) => {
   return (
     <div>
       {taskList.map((task) => (
-        <div>
-          <Task task={task} />
+        <div key={task.id}>
+          <Task task={task} taskList={taskList} setTaskList={setTaskList} />
         </div>
       ))}
     </div>

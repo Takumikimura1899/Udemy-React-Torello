@@ -3,10 +3,11 @@ import { TaskAddInput } from './input/TaskAddInput';
 import { TaskCardDeleteButton } from './button/TaskCardDeleteButton';
 import { TaskCardTitle } from './TaskCardTitle';
 import { Tasks } from './Tasks';
+import { Task } from './Task';
 
 export const TaskCard = () => {
   const [inputText, setInputText] = useState<string>('');
-  const [taskList, setTaskList] = useState<{ id: number; text: string }[]>([]);
+  const [taskList, setTaskList] = useState<Task[]>([]);
   return (
     <div className='taskCard'>
       <TaskCardTitle />
@@ -17,7 +18,7 @@ export const TaskCard = () => {
         taskList={taskList}
         setTaskList={setTaskList}
       />
-      <Tasks taskList={taskList} />
+      <Tasks taskList={taskList} setTaskList={setTaskList} />
     </div>
   );
 };
