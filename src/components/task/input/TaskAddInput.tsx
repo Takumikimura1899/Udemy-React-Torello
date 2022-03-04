@@ -1,12 +1,11 @@
 import React from 'react';
+import { Task } from '../Task';
 
 type Props = {
   inputText: string;
   setInputText: React.Dispatch<React.SetStateAction<string>>;
-  taskList: { id: number; text: string }[];
-  setTaskList: React.Dispatch<
-    React.SetStateAction<{ id: number; text: string }[]>
-  >;
+  taskList: Task[];
+  setTaskList: React.Dispatch<React.SetStateAction<Task[]>>;
 };
 
 export const TaskAddInput: React.FC<Props> = ({
@@ -18,7 +17,14 @@ export const TaskAddInput: React.FC<Props> = ({
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (inputText === '') return;
-    setTaskList([...taskList, { id: taskList.length, text: inputText }]);
+    setTaskList([
+      ...taskList,
+      {
+        id: taskList.length,
+        draggableId: `task-${taskList.length}`,
+        text: inputText,
+      },
+    ]);
     setInputText('');
   };
 
