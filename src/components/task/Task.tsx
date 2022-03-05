@@ -9,17 +9,23 @@ export type Task = {
 };
 
 type Props = {
+  index: number;
   task: Task;
   taskList: Task[];
   setTaskList: React.Dispatch<React.SetStateAction<Task[]>>;
 };
 
-export const Task: React.FC<Props> = ({ task, taskList, setTaskList }) => {
+export const Task: React.FC<Props> = ({
+  index,
+  task,
+  taskList,
+  setTaskList,
+}) => {
   const handleDelete = (id: number) => {
     setTaskList(taskList.filter((task) => task.id !== id));
   };
   return (
-    <Draggable index={task.id} draggableId={task.draggableId!}>
+    <Draggable index={index} draggableId={task.draggableId!}>
       {(provided) => (
         <div
           className='taskBox'

@@ -1,5 +1,5 @@
 import React from 'react';
-import { DragDropContext, Droppable } from 'react-beautiful-dnd';
+import { DragDropContext, Droppable, DropResult } from 'react-beautiful-dnd';
 import { Task } from './Task';
 
 type Props = {
@@ -7,16 +7,39 @@ type Props = {
   setTaskList: React.Dispatch<React.SetStateAction<Task[]>>;
 };
 
+const reorder: (
+  taskList: Task[],
+  startIndex: number,
+  endIndex: number
+) => Task[] = (taskList, startIndex, endIndex) => {
+  const dragEndTaskList = [...taskList];
+  const [reorderedTask] = dragEndTaskList.splice(startIndex, 1);
+  dragEndTaskList.splice(endIndex, 0, reorderedTask);
+  return dragEndTaskList;
+};
+
 export const Tasks: React.FC<Props> = ({ taskList, setTaskList }) => {
+  const handleDragEnd = (result: DropResult) => {
+    // taskを並び替える
+    const reorderedTaskList = reorder(
+      taskList,
+      result.source.index,
+      result.destination!.index
+    );
+
+    setTaskList(reorderedTaskList);
+  };
+
   return (
     <>
-      <DragDropContext onDragEnd={() => {}}>
+      <DragDropContext onDragEnd={handleDragEnd}>
         <Droppable droppableId='droppable'>
           {(provided) => (
             <div {...provided.droppableProps} ref={provided.innerRef}>
-              {taskList.map((task) => (
+              {taskList.map((task, index) => (
                 <div key={task.id}>
                   <Task
+                    index={index}
                     task={task}
                     taskList={taskList}
                     setTaskList={setTaskList}
