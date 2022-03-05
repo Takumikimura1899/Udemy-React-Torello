@@ -1,5 +1,12 @@
 import React from 'react';
+import { AiFillCloseCircle } from 'react-icons/ai';
 
 export const TaskCardDeleteButton = () => {
-  return <div></div>;
+  return (
+    <div>
+      <button className='taskCardDeleteButton'>
+        <AiFillCloseCircle />
+      </button>
+    </div>
+  );
 };

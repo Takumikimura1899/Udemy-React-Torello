@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 type Props = {
   taskCardsList: TaskCard[];
-  setTaskCardsList: any;
+  setTaskCardsList: React.Dispatch<React.SetStateAction<TaskCard[]>>;
 };
 
 export const AddTaskCardButton: React.FC<Props> = ({
