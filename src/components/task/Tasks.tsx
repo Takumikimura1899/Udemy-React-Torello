@@ -1,17 +1,18 @@
 import React from 'react';
 import { DragDropContext, Droppable, DropResult } from 'react-beautiful-dnd';
 import { Task } from './Task';
+import { TaskCard } from './TaskCard';
 
 type Props = {
   taskList: Task[];
   setTaskList: React.Dispatch<React.SetStateAction<Task[]>>;
 };
 
-const reorder: (
-  taskList: Task[],
+export const reorder: <T>(
+  taskList: T[],
   startIndex: number,
   endIndex: number
-) => Task[] = (taskList, startIndex, endIndex) => {
+) => T[] = (taskList, startIndex, endIndex) => {
   const dragEndTaskList = [...taskList];
   const [reorderedTask] = dragEndTaskList.splice(startIndex, 1);
   dragEndTaskList.splice(endIndex, 0, reorderedTask);
@@ -21,7 +22,7 @@ const reorder: (
 export const Tasks: React.FC<Props> = ({ taskList, setTaskList }) => {
   const handleDragEnd = (result: DropResult) => {
     // taskを並び替える
-    const reorderedTaskList = reorder(
+    const reorderedTaskList = reorder<Task>(
       taskList,
       result.source.index,
       result.destination!.index
