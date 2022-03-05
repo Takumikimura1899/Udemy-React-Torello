@@ -10,14 +10,28 @@ export type TaskCard = {
   draggableId: string;
 };
 
-export const TaskCard = () => {
+type Props = {
+  taskCardsList: TaskCard[];
+  setTaskCardsList: React.Dispatch<React.SetStateAction<TaskCard[]>>;
+  taskCard: TaskCard;
+};
+
+export const TaskCard: React.FC<Props> = ({
+  taskCardsList,
+  setTaskCardsList,
+  taskCard,
+}) => {
   const [inputText, setInputText] = useState<string>('');
   const [taskList, setTaskList] = useState<Task[]>([]);
   return (
     <div className='taskCard'>
       <div className='taskCardTitleAndTaskCardDeleteButtonArea'>
         <TaskCardTitle />
-        <TaskCardDeleteButton />
+        <TaskCardDeleteButton
+          taskCardsList={taskCardsList}
+          setTaskCardsList={setTaskCardsList}
+          taskCard={taskCard}
+        />
       </div>
       <TaskAddInput
         inputText={inputText}
