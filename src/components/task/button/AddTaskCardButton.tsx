@@ -17,7 +17,6 @@ export const AddTaskCardButton: React.FC<Props> = ({
       ...taskCardsList,
       { id: taskCardId, draggableId: `item${taskCardId}` },
     ]);
-    console.log(taskCardsList);
   };
   return (
     <div className='addTaskCardButtonArea'>
