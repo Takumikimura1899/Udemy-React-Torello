@@ -4,7 +4,7 @@ import { FaTrashAlt } from 'react-icons/fa';
 
 export type Task = {
   text: string;
-  id: number;
+  id: number | string;
   draggableId?: string;
 };
 
@@ -21,7 +21,7 @@ export const Task: React.FC<Props> = ({
   taskList,
   setTaskList,
 }) => {
-  const handleDelete = (id: number) => {
+  const handleDelete = (id: number | string) => {
     setTaskList(taskList.filter((task) => task.id !== id));
   };
   return (

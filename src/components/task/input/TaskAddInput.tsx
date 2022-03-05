@@ -1,5 +1,6 @@
 import React from 'react';
 import { Task } from '../Task';
+import { v4 as uuidv4 } from 'uuid';
 
 type Props = {
   inputText: string;
@@ -15,13 +16,14 @@ export const TaskAddInput: React.FC<Props> = ({
   setTaskList,
 }) => {
   const handleSubmit = (e: React.FormEvent) => {
+    const taskId = uuidv4();
     e.preventDefault();
     if (inputText === '') return;
     setTaskList([
       ...taskList,
       {
-        id: taskList.length,
-        draggableId: `task-${taskList.length}`,
+        id: taskId,
+        draggableId: `task-${taskId}`,
         text: inputText,
       },
     ]);
