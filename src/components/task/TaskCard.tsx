@@ -5,6 +5,11 @@ import { TaskCardTitle } from './TaskCardTitle';
 import { Tasks } from './Tasks';
 import { Task } from './Task';
 
+export type TaskCard = {
+  id: number | string;
+  draggableId: string;
+};
+
 export const TaskCard = () => {
   const [inputText, setInputText] = useState<string>('');
   const [taskList, setTaskList] = useState<Task[]>([]);

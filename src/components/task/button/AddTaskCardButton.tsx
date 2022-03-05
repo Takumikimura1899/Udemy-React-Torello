@@ -1,9 +1,29 @@
 import React from 'react';
+import { TaskCard } from '../TaskCard';
+import { v4 as uuidv4 } from 'uuid';
 
-export const AddTaskCardButton = () => {
+type Props = {
+  taskCardsList: TaskCard[];
+  setTaskCardsList: any;
+};
+
+export const AddTaskCardButton: React.FC<Props> = ({
+  taskCardsList,
+  setTaskCardsList,
+}) => {
+  const addTaskCard = () => {
+    const taskCardId = uuidv4();
+    setTaskCardsList([
+      ...taskCardsList,
+      { id: taskCardId, draggableId: `item${taskCardId}` },
+    ]);
+    console.log(taskCardsList);
+  };
   return (
     <div className='addTaskCardButtonArea'>
-      <button className='addTaskCardButton'>+</button>
+      <button className='addTaskCardButton' onClick={addTaskCard}>
+        +
+      </button>
     </div>
   );
 };
