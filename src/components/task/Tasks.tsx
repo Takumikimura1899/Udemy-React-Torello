@@ -1,7 +1,6 @@
 import React from 'react';
 import { DragDropContext, Droppable, DropResult } from 'react-beautiful-dnd';
 import { Task } from './Task';
-import { TaskCard } from './TaskCard';
 
 type Props = {
   taskList: Task[];
